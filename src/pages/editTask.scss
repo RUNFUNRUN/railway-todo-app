@@ -6,9 +6,19 @@ $form-text-color: #555555;
 $delete-button-color: #ff3333;
 $error-color: #ff3333;
 
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 320px;
+
 .edit-task {
   width: 1000px;
   margin: 0 auto;
+  @media (max-width: $breakpoint-tablet) {
+    width: 90%;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 95%;
+  }
 }
 
 .edit-task-form {

@@ -4,9 +4,19 @@ $primary-bg: #242f9b;
 $primary-text: #ffffff;
 $form-text-color: #555555;
 
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 320px;
+
 .new-list {
   width: 1000px;
   margin: 0 auto;
+  @media (max-width: $breakpoint-tablet) {
+    width: 90%;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 95%;
+  }
 }
 
 .new-list-form {
@@ -16,6 +26,13 @@ $form-text-color: #555555;
 .new-list-title {
   width: 300px;
   margin-bottom: 25px;
+  @media (max-width: $breakpoint-tablet) {
+    width: 90%;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 95%;
+  }
 }
 
 .new-list-button {

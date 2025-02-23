@@ -3,6 +3,8 @@
 $header-bg: #242f9b;
 $header-color: #ffffff;
 
+$breakpoint-mobile: 320px;
+
 .header {
   width: 100%;
   height: 80px;
@@ -10,6 +12,11 @@ $header-color: #ffffff;
   color: $header-color;
   display: flex;
   justify-content: space-between;
+  @media (max-width: $breakpoint-mobile) {
+    flex-direction: column;
+    gap: 5px;
+    height: 120px;
+  }
 }
 
 .sign-out-button {

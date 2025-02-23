@@ -5,9 +5,19 @@ $primary-text: #ffffff;
 $form-text-color: #555555;
 $error-color: #ff3333;
 
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 320px;
+
 .new-task {
   width: 1000px;
   margin: 0 auto;
+  @media (max-width: $breakpoint-tablet) {
+    width: 90%;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 95%;
+  }
 }
 
 .new-task-form {
