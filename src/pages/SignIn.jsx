@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import { Navigate, Link, useNavigate } from 'react-router-dom';
 import { Header } from '../components/Header';
-import './signin.css';
+import './signin.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { signIn } from '../authSlice';
 import { url } from '../const';
@@ -24,7 +24,7 @@ export const SignIn = () => {
       .then((res) => {
         setCookie('token', res.data.token);
         dispatch(signIn());
-        navigate.push('/');
+        navigate('/');
       })
       .catch((err) => {
         setErrorMessage(`サインインに失敗しました。${err}`);

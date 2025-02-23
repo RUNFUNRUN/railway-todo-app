@@ -6,7 +6,7 @@ import { useNavigate, Navigate } from 'react-router-dom';
 import { signIn } from '../authSlice';
 import { Header } from '../components/Header';
 import { url } from '../const';
-import './signUp.css';
+import './signUp.scss';
 
 export const SignUp = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ export const SignUp = () => {
         const token = res.data.token;
         dispatch(signIn());
         setCookie('token', token);
-        navigate.push('/');
+        navigate('/');
       })
       .catch((err) => {
         setErrorMessge(`サインアップに失敗しました。 ${err}`);

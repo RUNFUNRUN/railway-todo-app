@@ -1,5 +1,10 @@
 @charset "utf-8";
 
+$primary-bg: #242f9b;
+$primary-text: #ffffff;
+$form-text-color: #555555;
+$error-color: #ff3333;
+
 .signin {
   width: 500px;
   margin: 0 auto;
@@ -11,7 +16,7 @@
 
 .email-label,
 .password-label {
-  color: #555555;
+  color: $form-text-color;
 }
 
 .email-input,
@@ -23,13 +28,13 @@
 }
 
 .signin-button {
-  background-color: #242f9b;
-  color: #ffffff;
+  background-color: $primary-bg;
+  color: $primary-text;
   width: 100px;
   height: 40px;
   border-radius: 5px;
 }
 
 .error-message {
-  color: #ff3333;
+  color: $error-color;
 }

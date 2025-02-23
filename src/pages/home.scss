@@ -1,3 +1,11 @@
+@charset "utf-8";
+
+$primary-color: #242f9b;
+$primary-text: #ffffff;
+$error-color: #ff3333;
+$task-bg: #f5f5f5;
+$black: #000000;
+
 .taskList {
   margin: 50px auto;
   list-style: none;
@@ -25,14 +33,14 @@
   padding: 0 25px;
   text-overflow: normal;
   margin-right: 5px;
-  border: solid 1px #242f9b;
+  border: solid 1px $primary-color;
   justify-content: center;
   align-items: center;
 }
 
 .active {
-  background-color: #242f9b;
-  color: #ffffff;
+  background-color: $primary-color;
+  color: $primary-text;
 }
 
 .tasks {
@@ -48,7 +56,7 @@
   list-style-type: none;
   height: 70px;
   width: calc(100% - 25px);
-  background-color: #f5f5f5;
+  background-color: $task-bg;
   padding-left: 25px;
   font-size: large;
   border: solid 1px #ffffff;
@@ -59,11 +67,11 @@
   width: 100%;
   height: 100%;
   text-decoration: none;
-  color: #000000;
+  color: $black;
 }
 
 .error-message {
-  color: #ff3333;
+  color: $error-color;
 }
 
 .display-select-wrapper {

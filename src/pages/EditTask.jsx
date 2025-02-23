@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import { url } from '../const';
 import { useNavigate, useParams } from 'react-router-dom';
-import './editTask.css';
+import './editTask.scss';
 
 export const EditTask = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ export const EditTask = () => {
       })
       .then((res) => {
         console.log(res.data);
-        navigate.push('/');
+        navigate('/');
       })
       .catch((err) => {
         setErrorMessage(`更新に失敗しました。${err}`);
@@ -48,7 +48,7 @@ export const EditTask = () => {
         },
       })
       .then(() => {
-        navigate.push('/');
+        navigate('/');
       })
       .catch((err) => {
         setErrorMessage(`削除に失敗しました。${err}`);
