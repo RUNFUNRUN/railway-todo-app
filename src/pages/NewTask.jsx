@@ -11,16 +11,19 @@ export const NewTask = () => {
   const [lists, setLists] = useState([]);
   const [title, setTitle] = useState('');
   const [detail, setDetail] = useState('');
+  const [limit, setLimit] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [cookies] = useCookies();
   const navigate = useNavigate();
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDetailChange = (e) => setDetail(e.target.value);
+  const handleDeadlineChange = (e) => setLimit(e.target.value);
   const handleSelectList = (id) => setSelectListId(id);
   const onCreateTask = () => {
     const data = {
-      title: title,
-      detail: detail,
+      title,
+      detail,
+      limit: limit + 'Z',
       done: false,
     };
 
@@ -88,6 +91,15 @@ export const NewTask = () => {
             type='text'
             onChange={handleDetailChange}
             className='new-task-detail'
+          />
+          <br />
+          <label>期限</label>
+          <br />
+          <input
+            type='datetime-local'
+            onChange={handleDeadlineChange}
+            className='new-task-limit'
+            step='1'
           />
           <br />
           <button

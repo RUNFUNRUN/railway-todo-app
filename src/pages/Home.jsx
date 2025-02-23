@@ -134,18 +134,30 @@ const Tasks = (props) => {
           .filter((task) => {
             return task.done === true;
           })
-          .map((task, key) => (
-            <li key={key} className='task-item'>
-              <Link
-                to={`/lists/${selectListId}/tasks/${task.id}`}
-                className='task-item-link'
-              >
-                {task.title}
-                <br />
-                {task.done ? '完了' : '未完了'}
-              </Link>
-            </li>
-          ))}
+          .map((task, key) => {
+            const limit = task.limit && new Date(task.limit.slice(0, -1));
+
+            const limitString =
+              limit &&
+              limit.toLocaleString('ja-JP', {
+                timeZone: 'Asia/Tokyo',
+              });
+
+            return (
+              <li key={key} className='task-item'>
+                <Link
+                  to={`/lists/${selectListId}/tasks/${task.id}`}
+                  className='task-item-link'
+                >
+                  {task.title}
+                  <br />
+                  期限: {limitString ? limitString : '未設定'}
+                  <br />
+                  {task.done ? '完了' : '未完了'}
+                </Link>
+              </li>
+            );
+          })}
       </ul>
     );
   }
@@ -156,18 +168,49 @@ const Tasks = (props) => {
         .filter((task) => {
           return task.done === false;
         })
-        .map((task, key) => (
-          <li key={key} className='task-item'>
-            <Link
-              to={`/lists/${selectListId}/tasks/${task.id}`}
-              className='task-item-link'
-            >
-              {task.title}
-              <br />
-              {task.done ? '完了' : '未完了'}
-            </Link>
-          </li>
-        ))}
+        .map((task, key) => {
+          const limit = task.limit
+            ? new Date(task.limit.slice(0, -1))
+            : undefined;
+
+          const limitString = limit
+            ? limit.toLocaleString('ja-JP', {
+                timeZone: 'Asia/Tokyo',
+              })
+            : undefined;
+
+          const now = new Date();
+
+          const diffMs = limit ? limit - now : undefined;
+
+          const isDead = limit ? diffMs < 0 : undefined;
+
+          const diffSec = Math.floor(diffMs / 1000);
+          const days = Math.floor(diffSec / (24 * 3600));
+          const hours = Math.floor((diffSec % (24 * 3600)) / 3600);
+          const minutes = Math.floor((diffSec % 3600) / 60);
+
+          return (
+            <li key={key} className='task-item'>
+              <Link
+                to={`/lists/${selectListId}/tasks/${task.id}`}
+                className='task-item-link'
+              >
+                {task.title}
+                <br />
+                期限:{' '}
+                {limit
+                  ? limitString +
+                    (isDead
+                      ? ' - 期限が過ぎています'
+                      : ` - あと${days}日${hours}時間${minutes}分`)
+                  : '未設定'}
+                <br />
+                {task.done ? '完了' : '未完了'}
+              </Link>
+            </li>
+          );
+        })}
     </ul>
   );
 };
